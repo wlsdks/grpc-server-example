@@ -9,5 +9,7 @@ public class MemberSignUpRequestDTO {
     private String email;
     private String password;
     private String name;
+    private String profileImageBase64;
+    private String etcInfo;
 
 }
