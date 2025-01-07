@@ -1,6 +1,7 @@
 package com.demo.grpc.service;
 
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
+import com.demo.grpc.dto.ResponseMemberDTO;
 import com.demo.grpc.entity.Member;
 import com.demo.grpc.mapper.MemberMapper;
 import com.test.member.grpc.MemberProto;
@@ -25,7 +26,7 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
         MemberSignUpRequestDTO memberDTO = memberMapper.requestProtoToDto(request);
 
         // 2. 서비스 레이어에서 request 데이터를 사용해서 RDB에 저장하는 로직을 수행하고 결과를 받는다.
-        Member createdMember = memberService.createMember(memberDTO);
+        ResponseMemberDTO createdMember = memberService.createMember(memberDTO);
 
         // 3. RDB에 저장된 데이터를 gRPC response 데이터로 변환한다.
         MemberProto.MemberCreateResponse response = memberMapper.dtoToResponseProto(createdMember);

@@ -1,6 +1,7 @@
 package com.demo.grpc.controller;
 
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
+import com.demo.grpc.dto.ResponseMemberDTO;
 import com.demo.grpc.entity.Member;
 import com.demo.grpc.mapper.MemberMapper;
 import com.demo.grpc.service.MemberService;
@@ -20,9 +21,9 @@ public class MemberRestController {
     private final MemberMapper memberMapper;
 
     @PostMapping("/members")
-    public ResponseEntity<Member> createMember(@RequestBody MemberSignUpRequestDTO dto) {
+    public ResponseEntity<ResponseMemberDTO> createMember(@RequestBody MemberSignUpRequestDTO dto) {
         // DB에 저장
-        Member saved = memberService.createMember(dto);
+        ResponseMemberDTO saved = memberService.createMember(dto);
         return ResponseEntity.ok(saved);
     }
 
