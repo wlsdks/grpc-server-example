@@ -1,7 +1,7 @@
 buildscript {
     // 24.07.21 기준 최신 버전
     ext {
-        protobufVersion = '4.27.2'
+        protobufVersion = '4.28.2'
         protobufPluginVersion = '0.9.4'
         grpcVersion = '1.65.1'
     }
