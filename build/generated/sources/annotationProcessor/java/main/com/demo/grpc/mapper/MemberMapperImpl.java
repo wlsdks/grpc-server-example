@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-09-23T23:11:45+0900",
+    date = "2025-01-07T21:12:38+0900",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.10.1.jar, environment: Java 21.0.3 (Eclipse Adoptium)"
 )
 @Component
@@ -26,6 +26,8 @@ public class MemberMapperImpl implements MemberMapper {
         memberSignUpRequestDTO.setEmail( member.getEmail() );
         memberSignUpRequestDTO.setPassword( member.getPassword() );
         memberSignUpRequestDTO.setName( member.getName() );
+        memberSignUpRequestDTO.setProfileImageBase64( member.getProfileImageBase64() );
+        memberSignUpRequestDTO.setEtcInfo( member.getEtcInfo() );
 
         return memberSignUpRequestDTO;
     }
@@ -44,6 +46,8 @@ public class MemberMapperImpl implements MemberMapper {
         memberCreateResponse.setEmail( createdMember.getEmail() );
         memberCreateResponse.setPassword( createdMember.getPassword() );
         memberCreateResponse.setName( createdMember.getName() );
+        memberCreateResponse.setProfileImageBase64( createdMember.getProfileImageBase64() );
+        memberCreateResponse.setEtcInfo( createdMember.getEtcInfo() );
 
         return memberCreateResponse.build();
     }
@@ -54,13 +58,22 @@ public class MemberMapperImpl implements MemberMapper {
             return null;
         }
 
-        Member.MemberBuilder member = Member.builder();
+        Long id = null;
+        String email = null;
+        String password = null;
+        String name = null;
+        String profileImageBase64 = null;
+        String etcInfo = null;
 
-        member.id( memberDTO.getId() );
-        member.email( memberDTO.getEmail() );
-        member.password( memberDTO.getPassword() );
-        member.name( memberDTO.getName() );
+        id = memberDTO.getId();
+        email = memberDTO.getEmail();
+        password = memberDTO.getPassword();
+        name = memberDTO.getName();
+        profileImageBase64 = memberDTO.getProfileImageBase64();
+        etcInfo = memberDTO.getEtcInfo();
 
-        return member.build();
+        Member member = new Member( id, email, password, name, profileImageBase64, etcInfo );
+
+        return member;
     }
 }

@@ -70,6 +70,38 @@ public final class MemberProto {
      */
     com.google.protobuf.ByteString
         getNameBytes();
+
+    /**
+     * <pre>
+     * 대용량 필드
+     * </pre>
+     *
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The profileImageBase64.
+     */
+    java.lang.String getProfileImageBase64();
+    /**
+     * <pre>
+     * 대용량 필드
+     * </pre>
+     *
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The bytes for profileImageBase64.
+     */
+    com.google.protobuf.ByteString
+        getProfileImageBase64Bytes();
+
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The etcInfo.
+     */
+    java.lang.String getEtcInfo();
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The bytes for etcInfo.
+     */
+    com.google.protobuf.ByteString
+        getEtcInfoBytes();
   }
   /**
    * <pre>
@@ -100,6 +132,8 @@ public final class MemberProto {
       email_ = "";
       password_ = "";
       name_ = "";
+      profileImageBase64_ = "";
+      etcInfo_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -243,6 +277,92 @@ public final class MemberProto {
       }
     }
 
+    public static final int PROFILEIMAGEBASE64_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object profileImageBase64_ = "";
+    /**
+     * <pre>
+     * 대용량 필드
+     * </pre>
+     *
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The profileImageBase64.
+     */
+    @java.lang.Override
+    public java.lang.String getProfileImageBase64() {
+      java.lang.Object ref = profileImageBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        profileImageBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 대용량 필드
+     * </pre>
+     *
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The bytes for profileImageBase64.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getProfileImageBase64Bytes() {
+      java.lang.Object ref = profileImageBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        profileImageBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ETCINFO_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object etcInfo_ = "";
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The etcInfo.
+     */
+    @java.lang.Override
+    public java.lang.String getEtcInfo() {
+      java.lang.Object ref = etcInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        etcInfo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The bytes for etcInfo.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEtcInfoBytes() {
+      java.lang.Object ref = etcInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        etcInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -269,6 +389,12 @@ public final class MemberProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, name_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(profileImageBase64_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, profileImageBase64_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(etcInfo_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, etcInfo_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -290,6 +416,12 @@ public final class MemberProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(profileImageBase64_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, profileImageBase64_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(etcInfo_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, etcInfo_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -314,6 +446,10 @@ public final class MemberProto {
           .equals(other.getPassword())) return false;
       if (!getName()
           .equals(other.getName())) return false;
+      if (!getProfileImageBase64()
+          .equals(other.getProfileImageBase64())) return false;
+      if (!getEtcInfo()
+          .equals(other.getEtcInfo())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -334,6 +470,10 @@ public final class MemberProto {
       hash = (53 * hash) + getPassword().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + PROFILEIMAGEBASE64_FIELD_NUMBER;
+      hash = (53 * hash) + getProfileImageBase64().hashCode();
+      hash = (37 * hash) + ETCINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getEtcInfo().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -473,6 +613,8 @@ public final class MemberProto {
         email_ = "";
         password_ = "";
         name_ = "";
+        profileImageBase64_ = "";
+        etcInfo_ = "";
         return this;
       }
 
@@ -518,6 +660,12 @@ public final class MemberProto {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.name_ = name_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.profileImageBase64_ = profileImageBase64_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.etcInfo_ = etcInfo_;
+        }
       }
 
       @java.lang.Override
@@ -548,6 +696,16 @@ public final class MemberProto {
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getProfileImageBase64().isEmpty()) {
+          profileImageBase64_ = other.profileImageBase64_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getEtcInfo().isEmpty()) {
+          etcInfo_ = other.etcInfo_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -596,6 +754,16 @@ public final class MemberProto {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 42: {
+                profileImageBase64_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                etcInfo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -861,6 +1029,170 @@ public final class MemberProto {
         return this;
       }
 
+      private java.lang.Object profileImageBase64_ = "";
+      /**
+       * <pre>
+       * 대용량 필드
+       * </pre>
+       *
+       * <code>string profileImageBase64 = 5;</code>
+       * @return The profileImageBase64.
+       */
+      public java.lang.String getProfileImageBase64() {
+        java.lang.Object ref = profileImageBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          profileImageBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 대용량 필드
+       * </pre>
+       *
+       * <code>string profileImageBase64 = 5;</code>
+       * @return The bytes for profileImageBase64.
+       */
+      public com.google.protobuf.ByteString
+          getProfileImageBase64Bytes() {
+        java.lang.Object ref = profileImageBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          profileImageBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 대용량 필드
+       * </pre>
+       *
+       * <code>string profileImageBase64 = 5;</code>
+       * @param value The profileImageBase64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfileImageBase64(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        profileImageBase64_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 대용량 필드
+       * </pre>
+       *
+       * <code>string profileImageBase64 = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProfileImageBase64() {
+        profileImageBase64_ = getDefaultInstance().getProfileImageBase64();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 대용량 필드
+       * </pre>
+       *
+       * <code>string profileImageBase64 = 5;</code>
+       * @param value The bytes for profileImageBase64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfileImageBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        profileImageBase64_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object etcInfo_ = "";
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return The etcInfo.
+       */
+      public java.lang.String getEtcInfo() {
+        java.lang.Object ref = etcInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          etcInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return The bytes for etcInfo.
+       */
+      public com.google.protobuf.ByteString
+          getEtcInfoBytes() {
+        java.lang.Object ref = etcInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          etcInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @param value The etcInfo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEtcInfo(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        etcInfo_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEtcInfo() {
+        etcInfo_ = getDefaultInstance().getEtcInfo();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @param value The bytes for etcInfo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEtcInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        etcInfo_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:MemberRequest)
     }
 
@@ -957,6 +1289,30 @@ public final class MemberProto {
      */
     com.google.protobuf.ByteString
         getNameBytes();
+
+    /**
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The profileImageBase64.
+     */
+    java.lang.String getProfileImageBase64();
+    /**
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The bytes for profileImageBase64.
+     */
+    com.google.protobuf.ByteString
+        getProfileImageBase64Bytes();
+
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The etcInfo.
+     */
+    java.lang.String getEtcInfo();
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The bytes for etcInfo.
+     */
+    com.google.protobuf.ByteString
+        getEtcInfoBytes();
   }
   /**
    * <pre>
@@ -987,6 +1343,8 @@ public final class MemberProto {
       email_ = "";
       password_ = "";
       name_ = "";
+      profileImageBase64_ = "";
+      etcInfo_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1130,6 +1488,84 @@ public final class MemberProto {
       }
     }
 
+    public static final int PROFILEIMAGEBASE64_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object profileImageBase64_ = "";
+    /**
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The profileImageBase64.
+     */
+    @java.lang.Override
+    public java.lang.String getProfileImageBase64() {
+      java.lang.Object ref = profileImageBase64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        profileImageBase64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string profileImageBase64 = 5;</code>
+     * @return The bytes for profileImageBase64.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getProfileImageBase64Bytes() {
+      java.lang.Object ref = profileImageBase64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        profileImageBase64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ETCINFO_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object etcInfo_ = "";
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The etcInfo.
+     */
+    @java.lang.Override
+    public java.lang.String getEtcInfo() {
+      java.lang.Object ref = etcInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        etcInfo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string etcInfo = 6;</code>
+     * @return The bytes for etcInfo.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEtcInfoBytes() {
+      java.lang.Object ref = etcInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        etcInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1156,6 +1592,12 @@ public final class MemberProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, name_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(profileImageBase64_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, profileImageBase64_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(etcInfo_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, etcInfo_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1177,6 +1619,12 @@ public final class MemberProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(profileImageBase64_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, profileImageBase64_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(etcInfo_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, etcInfo_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1201,6 +1649,10 @@ public final class MemberProto {
           .equals(other.getPassword())) return false;
       if (!getName()
           .equals(other.getName())) return false;
+      if (!getProfileImageBase64()
+          .equals(other.getProfileImageBase64())) return false;
+      if (!getEtcInfo()
+          .equals(other.getEtcInfo())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1221,6 +1673,10 @@ public final class MemberProto {
       hash = (53 * hash) + getPassword().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + PROFILEIMAGEBASE64_FIELD_NUMBER;
+      hash = (53 * hash) + getProfileImageBase64().hashCode();
+      hash = (37 * hash) + ETCINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getEtcInfo().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1360,6 +1816,8 @@ public final class MemberProto {
         email_ = "";
         password_ = "";
         name_ = "";
+        profileImageBase64_ = "";
+        etcInfo_ = "";
         return this;
       }
 
@@ -1405,6 +1863,12 @@ public final class MemberProto {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.name_ = name_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.profileImageBase64_ = profileImageBase64_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.etcInfo_ = etcInfo_;
+        }
       }
 
       @java.lang.Override
@@ -1435,6 +1899,16 @@ public final class MemberProto {
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getProfileImageBase64().isEmpty()) {
+          profileImageBase64_ = other.profileImageBase64_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getEtcInfo().isEmpty()) {
+          etcInfo_ = other.etcInfo_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1483,6 +1957,16 @@ public final class MemberProto {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 42: {
+                profileImageBase64_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                etcInfo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1748,6 +2232,150 @@ public final class MemberProto {
         return this;
       }
 
+      private java.lang.Object profileImageBase64_ = "";
+      /**
+       * <code>string profileImageBase64 = 5;</code>
+       * @return The profileImageBase64.
+       */
+      public java.lang.String getProfileImageBase64() {
+        java.lang.Object ref = profileImageBase64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          profileImageBase64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string profileImageBase64 = 5;</code>
+       * @return The bytes for profileImageBase64.
+       */
+      public com.google.protobuf.ByteString
+          getProfileImageBase64Bytes() {
+        java.lang.Object ref = profileImageBase64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          profileImageBase64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string profileImageBase64 = 5;</code>
+       * @param value The profileImageBase64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfileImageBase64(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        profileImageBase64_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string profileImageBase64 = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProfileImageBase64() {
+        profileImageBase64_ = getDefaultInstance().getProfileImageBase64();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string profileImageBase64 = 5;</code>
+       * @param value The bytes for profileImageBase64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfileImageBase64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        profileImageBase64_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object etcInfo_ = "";
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return The etcInfo.
+       */
+      public java.lang.String getEtcInfo() {
+        java.lang.Object ref = etcInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          etcInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return The bytes for etcInfo.
+       */
+      public com.google.protobuf.ByteString
+          getEtcInfoBytes() {
+        java.lang.Object ref = etcInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          etcInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @param value The etcInfo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEtcInfo(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        etcInfo_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEtcInfo() {
+        etcInfo_ = getDefaultInstance().getEtcInfo();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string etcInfo = 6;</code>
+       * @param value The bytes for etcInfo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEtcInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        etcInfo_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:MemberCreateResponse)
     }
 
@@ -1818,14 +2446,16 @@ public final class MemberProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014member.proto\"J\n\rMemberRequest\022\n\n\002id\030\001 " +
+      "\n\014member.proto\"w\n\rMemberRequest\022\n\n\002id\030\001 " +
       "\001(\003\022\r\n\005email\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\014\n\004" +
-      "name\030\004 \001(\t\"Q\n\024MemberCreateResponse\022\n\n\002id" +
-      "\030\001 \001(\003\022\r\n\005email\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022" +
-      "\014\n\004name\030\004 \001(\t2F\n\rMemberService\0225\n\014Create" +
-      "Member\022\016.MemberRequest\032\025.MemberCreateRes" +
-      "ponseB#\n\024com.test.member.grpcB\013MemberPro" +
-      "tob\006proto3"
+      "name\030\004 \001(\t\022\032\n\022profileImageBase64\030\005 \001(\t\022\017" +
+      "\n\007etcInfo\030\006 \001(\t\"~\n\024MemberCreateResponse\022" +
+      "\n\n\002id\030\001 \001(\003\022\r\n\005email\030\002 \001(\t\022\020\n\010password\030\003" +
+      " \001(\t\022\014\n\004name\030\004 \001(\t\022\032\n\022profileImageBase64" +
+      "\030\005 \001(\t\022\017\n\007etcInfo\030\006 \001(\t2F\n\rMemberService" +
+      "\0225\n\014CreateMember\022\016.MemberRequest\032\025.Membe" +
+      "rCreateResponseB#\n\024com.test.member.grpcB" +
+      "\013MemberProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1836,13 +2466,13 @@ public final class MemberProto {
     internal_static_MemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MemberRequest_descriptor,
-        new java.lang.String[] { "Id", "Email", "Password", "Name", });
+        new java.lang.String[] { "Id", "Email", "Password", "Name", "ProfileImageBase64", "EtcInfo", });
     internal_static_MemberCreateResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_MemberCreateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MemberCreateResponse_descriptor,
-        new java.lang.String[] { "Id", "Email", "Password", "Name", });
+        new java.lang.String[] { "Id", "Email", "Password", "Name", "ProfileImageBase64", "EtcInfo", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
