@@ -19,10 +19,8 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
     private final MemberMapper memberMapper;
 
     @Override
-    public void createMember(
-            MemberProto.MemberRequest request,
-            StreamObserver<MemberProto.MemberCreateResponse> responseObserver
-    ) {
+    public void createMember(MemberProto.MemberRequest request,
+                             StreamObserver<MemberProto.MemberCreateResponse> responseObserver) {
         // 1. 클라이언트로부터 전달받은 request 데이터를 DTO로 변환한다.
         MemberSignUpRequestDTO memberDTO = memberMapper.requestProtoToDto(request);
 
@@ -36,5 +34,5 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
-    
+
 }
