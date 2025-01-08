@@ -2,7 +2,7 @@ package com.demo.grpc.mapper;
 
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
 import com.demo.grpc.dto.ResponseMemberDTO;
-import com.demo.grpc.entity.Member;
+import com.demo.grpc.entity.MemberEntity;
 import com.test.member.grpc.MemberProto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -21,9 +21,9 @@ public interface MemberMapper {
     MemberProto.MemberCreateResponse dtoToResponseProto(ResponseMemberDTO createdMember);
 
     // DTO를 Entity로 변환
-    Member dtoToEntity(MemberSignUpRequestDTO memberDTO);
+    MemberEntity dtoToEntity(MemberSignUpRequestDTO memberDTO);
 
     // Entity를 DTO로 변환
-    ResponseMemberDTO dtoToResponseDto(Member savedMember);
+    ResponseMemberDTO dtoToResponseDto(MemberEntity savedMemberEntity);
 
 }

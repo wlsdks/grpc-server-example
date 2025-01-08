@@ -2,7 +2,7 @@ package com.demo.grpc.service;
 
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
 import com.demo.grpc.dto.ResponseMemberDTO;
-import com.demo.grpc.entity.Member;
+import com.demo.grpc.entity.MemberEntity;
 import com.demo.grpc.mapper.MemberMapper;
 import com.demo.grpc.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +18,9 @@ public class MemberService {
 
     @Transactional
     public ResponseMemberDTO createMember(MemberSignUpRequestDTO memberDTO) {
-        Member member = memberMapper.dtoToEntity(memberDTO);
-        Member savedMember = memberRepository.save(member);
-        return memberMapper.dtoToResponseDto(savedMember);
+        MemberEntity memberEntity = memberMapper.dtoToEntity(memberDTO);
+        MemberEntity savedMemberEntity = memberRepository.save(memberEntity);
+        return memberMapper.dtoToResponseDto(savedMemberEntity);
     }
 
 }

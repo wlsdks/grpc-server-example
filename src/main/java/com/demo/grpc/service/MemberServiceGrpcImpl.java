@@ -2,7 +2,6 @@ package com.demo.grpc.service;
 
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
 import com.demo.grpc.dto.ResponseMemberDTO;
-import com.demo.grpc.entity.Member;
 import com.demo.grpc.mapper.MemberMapper;
 import com.test.member.grpc.MemberProto;
 import com.test.member.grpc.MemberServiceGrpc;
