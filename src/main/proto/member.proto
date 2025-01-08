@@ -6,6 +6,8 @@ option java_outer_classname = "MemberProto";
 
 service MemberService {
   rpc CreateMember (MemberRequest) returns (MemberCreateResponse);
+  // gRPC의 스트리밍 기능을 통해 다수의 요청과 응답을 효율적으로 처리하는 방식
+  rpc StreamCreateMember (stream MemberRequest) returns (stream MemberCreateResponse);
 }
 
 // 멤버 생성 요청 객체

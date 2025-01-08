@@ -35,4 +35,42 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
         responseObserver.onCompleted();
     }
 
+    /**
+     * @param responseObserver : 클라이언트로부터 받은 요청에 대한 응답을 전송하는 스트림
+     * @return StreamObserver<MemberProto.MemberRequest> : 클라이언트로부터 받은 요청을 처리하는 스트림
+     * @apiNote 클라이언트로부터 스트리밍 요청을 받아서 응답을 스트리밍으로 전송하는 메서드
+     */
+    @Override
+    public StreamObserver<MemberProto.MemberRequest> streamCreateMember(StreamObserver<MemberProto.MemberCreateResponse> responseObserver) {
+        return new StreamObserver<MemberProto.MemberRequest>() {
+            @Override
+            public void onNext(MemberProto.MemberRequest request) {
+                // 클라이언트 요청 처리 (예시로 받은 데이터를 그대로 응답)
+                MemberProto.MemberCreateResponse response = MemberProto.MemberCreateResponse.newBuilder()
+                        .setId(request.getId())
+                        .setEmail(request.getEmail())
+                        .setPassword("EncryptedPassword") // 예시로 비밀번호를 처리한 상태로 응답
+                        .setName(request.getName())
+                        .setProfileImageBase64(request.getProfileImageBase64())
+                        .setEtcInfo(request.getEtcInfo())
+                        .build();
+
+                // 클라이언트로 응답 스트림 전송
+                responseObserver.onNext(response);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                log.error("Streaming 요청 처리 중 에러 발생: ", t);
+            }
+
+            @Override
+            public void onCompleted() {
+                // 스트리밍 완료
+                log.info("Streaming 요청 완료");
+                responseObserver.onCompleted();
+            }
+        };
+    }
+
 }
