@@ -1,6 +1,9 @@
 syntax = "proto3";
 
+package com.test.member.grpc;
+
 // 여기에 내가 원하는 패키지명을 적는다. 아래는 예시이며 실제 프로젝트 패키지를 잘 보면서 수정하자.
+//option java_multiple_files = true;
 option java_package = "com.test.member.grpc";
 option java_outer_classname = "MemberProto";
 
