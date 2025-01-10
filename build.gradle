@@ -38,6 +38,7 @@ repositories {
 dependencies {
 // spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // data jpa, h2
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -62,6 +63,14 @@ dependencies {
     implementation "io.grpc:grpc-stub:${grpcVersion}"         // gRPC 클라이언트 스텁을 생성
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53'    // 이걸 추가해야 gRPC 컴파일시 javax 어노테이션 오류가 발생하지 않는다.
 
+    implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+
+    // Grpc-Test-Support
+    testImplementation("io.grpc:grpc-testing")
+    // Spring-Test-Support (Optional)
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 protobuf {
