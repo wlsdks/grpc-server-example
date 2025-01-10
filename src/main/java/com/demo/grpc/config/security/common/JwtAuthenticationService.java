@@ -28,9 +28,10 @@ public class JwtAuthenticationService {
         String username = jwtUtil.extractUsername(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
+        // 토큰을 credentials에 포함시킵니다
         return new UsernamePasswordAuthenticationToken(
                 userDetails,
-                null,
+                token,  // 토큰을 credentials로 저장
                 userDetails.getAuthorities()
         );
     }
