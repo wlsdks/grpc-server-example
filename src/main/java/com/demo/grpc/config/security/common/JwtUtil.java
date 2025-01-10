@@ -4,6 +4,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -12,9 +13,16 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    // 비밀 키 생성
-    private final SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); // 키 생성
+    // 상수로 시크릿 키 문자열 정의
+    private static final String SECRET_KEY_STRING = "your_very_long_and_secure_secret_key_at_least_256_bits_long_for_hs256_algorithm";
+    private SecretKey secretKey;
     private final long expiration = 3600000; // 1시간
+
+    @PostConstruct
+    public void init() {
+        // 문자열에서 SecretKey 생성
+        secretKey = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
+    }
 
     // JWT 토큰 생성
     public String generateToken(String username) {
