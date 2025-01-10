@@ -1,4 +1,4 @@
-package com.demo.grpc.config;
+package com.demo.grpc.config.server;
 
 import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
 import net.devh.boot.grpc.server.serverfactory.GrpcServerConfigurer;
