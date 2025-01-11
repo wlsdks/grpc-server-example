@@ -18,7 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * 만약 @GrpcGlobalServerInterceptor를 주석 해제하면 GrpcSecurityConfig는 주석처리해주세요.
  */
 @Slf4j
-@GrpcGlobalServerInterceptor
+//@GrpcGlobalServerInterceptor
 @RequiredArgsConstructor
 public class GrpcJwtServerInterceptor implements ServerInterceptor {
 
