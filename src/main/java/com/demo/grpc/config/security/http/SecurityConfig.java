@@ -17,8 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableMethodSecurity(prePostEnabled = true)
-// GrpcServerSecurityAutoConfiguration 비활성화
-@EnableAutoConfiguration(exclude = {GrpcServerSecurityAutoConfiguration.class})
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
