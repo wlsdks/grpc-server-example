@@ -7,18 +7,15 @@ import io.grpc.ForwardingServerCall.SimpleForwardingServerCall;
 import io.grpc.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.devh.boot.grpc.server.autoconfigure.GrpcServerSecurityAutoConfiguration;
 import net.devh.boot.grpc.server.interceptor.GrpcGlobalServerInterceptor;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-/**
- * gRPC 서버 인터셉터에서 JWT 토큰을 인증하는 클래스입니다.
- * gRPC Security Config과 중복으로 적용되면 안됩니다. 그러니 꼭 하나만 사용해주시고 @GrpcGlobalServerInterceptor를 주석처리해주세요.
- * 또한 Deprecated를 주석 해제해주세요. (일부로 분리하기 위해 적어놓은 주석입니다.)
- * 만약 @GrpcGlobalServerInterceptor를 주석 해제하면 GrpcSecurityConfig는 주석처리해주세요.
- */
+@EnableAutoConfiguration(exclude = {GrpcServerSecurityAutoConfiguration.class})
 @Slf4j
-//@GrpcGlobalServerInterceptor
+@GrpcGlobalServerInterceptor
 @RequiredArgsConstructor
 public class GrpcJwtServerInterceptor implements ServerInterceptor {
 
