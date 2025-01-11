@@ -10,6 +10,8 @@ import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,7 +29,11 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
     public void getMemberById(MemberProto.MemberIdRequest request,
                               StreamObserver<MemberProto.MemberResponse> responseObserver) {
         // 메서드 진입 로깅 추가
-        log.info(("getMemberById 메서드 실행 시작 - ID: {}"), request.getId());
+        log.info(("gRPC 서버의 getMemberById 메서드 실행 시작 - ID: {}"), request.getId());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        log.info("gRPC 서버 메서드 내부 시큐리티 인증 정보: {}", authentication.getCredentials());
 
         try {
             MemberEntity member = memberRepository.findById(request.getId())

@@ -17,9 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * 또한 Deprecated를 주석 해제해주세요. (일부로 분리하기 위해 적어놓은 주석입니다.)
  * 만약 @GrpcGlobalServerInterceptor를 주석 해제하면 GrpcSecurityConfig는 주석처리해주세요.
  */
-@Deprecated
 @Slf4j
-//@GrpcGlobalServerInterceptor
+@GrpcGlobalServerInterceptor
 @RequiredArgsConstructor
 public class GrpcJwtServerInterceptor implements ServerInterceptor {
 
