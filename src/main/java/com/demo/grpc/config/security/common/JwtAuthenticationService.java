@@ -1,9 +1,9 @@
 package com.demo.grpc.config.security.common;
 
+import com.demo.grpc.config.security.grpc.GrpcAuthenticationToken;
 import com.demo.grpc.exception.JwtAuthenticationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,35 +17,35 @@ public class JwtAuthenticationService {
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
-    /**
-     * @param token JWT 토큰
-     * @return Authentication 객체
-     * @apiNote JWT 토큰을 검증하고 Authentication 객체를 생성합니다.
-     */
     public Authentication authenticateToken(String token) {
-        log.info("토큰 인증 시작 - 토큰: {}", token);
-
         try {
+            log.info("JWT 인증 시작 - 토큰: {}", token);
+
+            // 토큰 유효성 검사
             if (!jwtUtil.isTokenValid(token)) {
-                log.info("토큰 유효성 검증 실패");
-                throw new JwtAuthenticationException("Invalid JWT token");
+                log.warn("JWT 토큰이 유효하지 않음");
+                throw new JwtAuthenticationException("유효하지 않은 JWT 토큰");
             }
-            log.info("토큰 유효성 검증 성공");
 
+            // 사용자 이름 추출
             String username = jwtUtil.extractUsername(token);
-            log.info("토큰에서 추출한 사용자명: {}", username);
+            log.info("JWT에서 추출한 사용자 이름: {}", username);
 
+            // 사용자 정보 로드
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            log.info("사용자 정보 로드 성공: {}", userDetails.getUsername());
+            log.info("사용자 정보 로드 완료 - 권한: {}", userDetails.getAuthorities());
 
-            return new UsernamePasswordAuthenticationToken(
+            return new GrpcAuthenticationToken(
                     userDetails,
                     token,
                     userDetails.getAuthorities()
             );
-        } catch (Exception e) {
-            log.info("인증 과정 중 예외 발생: {}", e.getMessage(), e);
+        } catch (JwtAuthenticationException e) {
+            log.error("JWT 인증 실패: {}", e.getMessage());
             throw e;
+        } catch (Exception e) {
+            log.error("JWT 인증 중 알 수 없는 오류 발생: {}", e.getMessage(), e);
+            throw new RuntimeException("JWT 인증 중 오류 발생", e);
         }
     }
 

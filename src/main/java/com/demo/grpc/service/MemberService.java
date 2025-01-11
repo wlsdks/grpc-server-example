@@ -1,5 +1,7 @@
 package com.demo.grpc.service;
 
+import com.demo.grpc.config.security.common.JwtUtil;
+import com.demo.grpc.dto.LoginResponse;
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
 import com.demo.grpc.dto.ResponseMemberDTO;
 import com.demo.grpc.entity.MemberEntity;
@@ -15,12 +17,36 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final MemberMapper memberMapper;
+    private final JwtUtil jwtUtil;
 
+    /**
+     * @param memberDTO 회원 가입 요청
+     * @return 회원 가입 응답
+     * @apiNote 회원을 생성합니다.
+     */
     @Transactional
     public ResponseMemberDTO createMember(MemberSignUpRequestDTO memberDTO) {
         MemberEntity memberEntity = memberMapper.dtoToEntity(memberDTO);
         MemberEntity savedMemberEntity = memberRepository.save(memberEntity);
         return memberMapper.dtoToResponseDto(savedMemberEntity);
+    }
+
+    /**
+     * @param email    이메일
+     * @param password 비밀번호
+     * @return 로그인 응답
+     * @apiNote 이메일과 비밀번호로 로그인합니다.
+     */
+    public LoginResponse login(String email, String password) {
+        // 회원 조회
+        MemberEntity memberEntity = memberRepository.findByEmail(email)
+                .filter(member -> member.getPassword().equals(password))
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+
+        // JWT 토큰 생성
+        String token = jwtUtil.generateToken(memberEntity.getEmail());
+
+        return LoginResponse.of(token, "Bearer");
     }
 
 }

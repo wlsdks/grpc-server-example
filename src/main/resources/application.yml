@@ -17,7 +17,9 @@ spring:
 grpc:
   server:
     port: 50051 # gRPC 서버 포트
-    maxInboundMessageSize: 10485760 # 최대 메시지 크기 (10MB)grpc:
+    maxInboundMessageSize: 10485760 # 최대 메시지 크기 (10MB)
+    security:
+      enabled: false
 
 jwt:
   secret-key: "your-256-bit-secret-key-base64-encoded"
