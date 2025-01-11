@@ -36,6 +36,9 @@ public class GrpcJwtServerInterceptor implements ServerInterceptor {
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> call,
                                                                  Metadata headers,
                                                                  ServerCallHandler<ReqT, RespT> next) {
+        // 현재 스레드를 로깅한다.
+        log.info("현재 스레드 인터셉터: {}", Thread.currentThread().getName());
+
         // Authorization 헤더 추출
         String authorizationHeader = headers.get(Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER));
         log.info("gRPC 서버 인터셉터에서 수신한 Authorization 헤더: {}", authorizationHeader);

@@ -34,4 +34,26 @@ public class GrpcServerConfig {
         };
     }
 
+
+    // 스레드 오류 상황을 재현하고 싶다면 이 메서드를 사용하세요.
+//    @Bean
+//    public GrpcServerConfigurer keepAliveServerConfigurer() {
+//        return serverBuilder -> {
+//            if (serverBuilder instanceof NettyServerBuilder) {
+////                // 기본 ExecutorService 생성
+////                ExecutorService executorService = Executors.newFixedThreadPool(50);
+////
+////                // SecurityContext를 전파하는 ExecutorService로 래핑
+////                ExecutorService securityContextExecutorService =
+////                        new DelegatingSecurityContextExecutorService(executorService);
+//
+//                ((NettyServerBuilder) serverBuilder)
+//                        .executor(Executors.newFixedThreadPool(50)) // 보안 컨텍스트를 전파하는 실행자 사용
+//                        .maxInboundMessageSize(10 * 1024 * 1024)
+//                        .keepAliveTime(30, TimeUnit.SECONDS)
+//                        .keepAliveTimeout(5, TimeUnit.SECONDS)
+//                        .permitKeepAliveWithoutCalls(true);
+//            }
+//        };
+
 }

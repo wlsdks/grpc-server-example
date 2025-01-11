@@ -31,6 +31,9 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
         // 메서드 진입 로깅 추가
         log.info(("gRPC 서버의 getMemberById 메서드 실행 시작 - ID: {}"), request.getId());
 
+        // 현재 스레드를 로깅한다.
+        log.info("현재 스레드 메서드 내부: {}", Thread.currentThread().getName());
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         log.info("gRPC 서버 메서드 내부 시큐리티 인증 정보: {}", authentication.getCredentials());
