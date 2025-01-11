@@ -4,23 +4,20 @@ import com.demo.grpc.config.security.common.JwtAuthenticationService;
 import com.demo.grpc.exception.JwtAuthenticationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.devh.boot.grpc.server.autoconfigure.GrpcServerSecurityAutoConfiguration;
 import net.devh.boot.grpc.server.security.authentication.BearerAuthenticationReader;
 import net.devh.boot.grpc.server.security.authentication.CompositeGrpcAuthenticationReader;
 import net.devh.boot.grpc.server.security.authentication.GrpcAuthenticationReader;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-// gRPC Request → GrpcAuthenticationReader → JwtAuthenticationService  
-//→ JwtUtil(토큰 검증) → CustomUserDetailsService(사용자 정보 조회) → SecurityContext
-// GrpcServerSecurityAutoConfiguration을 제외하면 기본 보안 설정은 비활성화됩니다.
-// 하지만 우리가 GrpcAuthenticationReader 빈을 등록하면, 이는 ServerInterceptorConfiguration에 의해 감지되고 사용됩니다.
+@EnableAutoConfiguration(exclude = {GrpcServerSecurityAutoConfiguration.class})
 @Slf4j
 @RequiredArgsConstructor
-// GrpcServerSecurityAutoConfiguration 비활성화
-//@EnableAutoConfiguration(exclude = {GrpcServerSecurityAutoConfiguration.class})
 @Configuration
 public class GrpcJwtSecurityConfig {
 
