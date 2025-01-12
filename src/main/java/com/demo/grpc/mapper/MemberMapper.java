@@ -3,7 +3,6 @@ package com.demo.grpc.mapper;
 import com.demo.grpc.dto.MemberSignUpRequestDTO;
 import com.demo.grpc.dto.ResponseMemberDTO;
 import com.demo.grpc.entity.MemberEntity;
-import com.test.member.grpc.MemberProto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -13,12 +12,6 @@ import org.mapstruct.ReportingPolicy;
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MemberMapper {
-
-    // gRPC request를 DTO로 변환
-    MemberSignUpRequestDTO requestProtoToDto(MemberProto.MemberRequest member);
-
-    // dto를 gRPC response로 변환
-    MemberProto.MemberCreateResponse dtoToResponseProto(ResponseMemberDTO createdMember);
 
     // DTO를 Entity로 변환
     MemberEntity dtoToEntity(MemberSignUpRequestDTO memberDTO);
