@@ -1,4 +1,4 @@
-package com.demo.grpc.config.security.http;
+package com.demo.grpc.config.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

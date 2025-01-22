@@ -1,6 +1,6 @@
 package com.demo.grpc.config.security.grpc.manager;
 
-import com.demo.grpc.config.security.common.JwtAuthenticationService;
+import com.demo.grpc.config.security.service.JwtAuthenticationService;
 import com.demo.grpc.exception.JwtAuthenticationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

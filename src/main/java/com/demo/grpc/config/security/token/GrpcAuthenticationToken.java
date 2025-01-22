@@ -1,4 +1,4 @@
-package com.demo.grpc.config.security.grpc.token;
+package com.demo.grpc.config.security.token;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
