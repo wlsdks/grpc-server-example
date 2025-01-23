@@ -1,6 +1,7 @@
 package com.demo.grpc.config.security.grpc.manager;
 
-import com.demo.grpc.config.security.service.JwtAuthenticationService;
+import com.demo.grpc.config.security.server.ServerTokenClaims;
+import com.demo.grpc.config.security.service.ServerAuthenticationService;
 import com.demo.grpc.exception.JwtAuthenticationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GrpcAuthenticationManagerImpl implements AuthenticationManager {
 
-    private final JwtAuthenticationService jwtAuthenticationService;
+    private final ServerAuthenticationService serverAuthenticationService;
 
     /**
      * @param authentication 인증 객체
@@ -33,12 +34,13 @@ public class GrpcAuthenticationManagerImpl implements AuthenticationManager {
         try {
             log.debug("Authenticating user: {}", authentication.getName());
 
-            // 토큰은 credentials에 저장되어 있습니다
-            String token = (String) authentication.getCredentials();
-
-            // JwtAuthenticationService를 통해 인증 처리
-            return jwtAuthenticationService.authenticateToken(token);
-
+            if (authentication.getPrincipal() instanceof ServerTokenClaims) {
+                // 이미 앞단계(gRPC 인터셉터)에서 인증된 경우에는 바로 통과
+                return authentication;
+            } else {
+                // 서버 토큰을 이용한 인증 처리
+                return serverAuthenticationService.authenticateServer((ServerTokenClaims) authentication.getPrincipal());
+            }
         } catch (JwtAuthenticationException e) {
             log.error("JWT 인증 실패: {}", e.getMessage());
             throw new BadCredentialsException("JWT 인증 실패", e);

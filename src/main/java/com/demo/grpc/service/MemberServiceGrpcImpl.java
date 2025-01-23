@@ -33,7 +33,7 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        log.info("gRPC 서버 메서드 내부 시큐리티 인증 정보: {}", authentication.getCredentials());
+        log.info("gRPC 서버 메서드 내부 시큐리티 인증 정보: {}", authentication.getPrincipal());
 
         try {
             MemberEntity member = memberRepository.findById(request.getId())
