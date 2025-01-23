@@ -49,4 +49,16 @@ public class MemberService {
         return LoginResponse.of(token, "Bearer");
     }
 
+    /**
+     * @param memberId 회원 ID
+     * @return 회원 조회 응답
+     * @apiNote 회원 ID로 회원을 조회합니다.
+     */
+    public ResponseMemberDTO getMemberById(Long memberId) {
+        MemberEntity memberEntity = memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid member ID"));
+
+        return memberMapper.dtoToResponseDto(memberEntity);
+    }
+
 }

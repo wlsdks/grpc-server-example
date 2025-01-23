@@ -5,10 +5,7 @@ import com.demo.grpc.dto.ResponseMemberDTO;
 import com.demo.grpc.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +19,13 @@ public class MemberRestController {
         // DB에 저장
         ResponseMemberDTO saved = memberService.createMember(dto);
         return ResponseEntity.ok(saved);
+    }
+
+    @GetMapping("/members/{memberId}")
+    public ResponseEntity<ResponseMemberDTO> getMemberById(@PathVariable Long memberId) {
+        // DB에서 조회
+        ResponseMemberDTO member = memberService.getMemberById(memberId);
+        return ResponseEntity.ok(member);
     }
 
 }
