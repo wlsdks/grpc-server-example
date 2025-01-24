@@ -48,7 +48,7 @@ public class GrpcServerTokenInterceptor {
 
                 String token = authHeader.substring(7);
                 ServerTokenClaims claims = serverTokenUtil.validateAndGetClaims(token);
-                log.info("서버 토큰 인증 시도 - 클레임: {}", claims);
+                log.trace("서버 토큰 인증 시도 - 클레임: {}", claims);
 
                 return serverAuthenticationService.authenticateServer(claims);
             } catch (Exception e) {

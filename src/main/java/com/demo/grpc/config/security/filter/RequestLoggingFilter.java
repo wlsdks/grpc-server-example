@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 @Slf4j
-@Component
+//@Component
 public class RequestLoggingFilter extends OncePerRequestFilter {
 
     @Override
