@@ -2,11 +2,13 @@ package com.demo.grpc.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
+@Setter
 @Embeddable
 public class EtcInfo {
 

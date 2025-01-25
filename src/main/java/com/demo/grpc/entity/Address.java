@@ -3,9 +3,11 @@ package com.demo.grpc.entity;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
 
+@Setter
 @Getter
 @Embeddable
 public class Address {

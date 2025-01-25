@@ -1,6 +1,7 @@
 package com.demo.grpc.service;
 
 import com.demo.grpc.entity.MemberEntity;
+import com.demo.grpc.mapper.GrpcMemberMapper;
 import com.demo.grpc.repository.MemberRepository;
 import com.test.member.grpc.MemberProto;
 import com.test.member.grpc.MemberServiceGrpc;
@@ -10,15 +11,16 @@ import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
+@Transactional(readOnly = true) // 트랜잭션 추가하여 지연 로딩 문제 해결
 @RequiredArgsConstructor
 @GrpcService
 public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBase {
 
     private final MemberRepository memberRepository;
+    private final GrpcMemberMapper grpcMemberMapper;
 
     /**
      * @param request          : 클라이언트로부터 받은 요청
@@ -28,13 +30,6 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
     @Override
     public void getMemberById(MemberProto.MemberIdRequest request,
                               StreamObserver<MemberProto.MemberResponse> responseObserver) {
-        // 메서드 진입 로깅 추가
-        log.trace(("gRPC 서버의 getMemberById 메서드 실행 시작 - ID: {}"), request.getId());
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        log.trace("gRPC 서버 메서드 내부 시큐리티 인증 정보: {}", authentication.getPrincipal());
-
         try {
             MemberEntity member = memberRepository.findById(request.getId())
                     .orElseThrow(() -> {
@@ -44,16 +39,8 @@ public class MemberServiceGrpcImpl extends MemberServiceGrpc.MemberServiceImplBa
                         );
                     });
 
-            log.trace("회원 조회 성공 - 이메일: {}", member.getEmail());
-
             // 기존 응답 로직
-            MemberProto.MemberResponse response = MemberProto.MemberResponse.newBuilder()
-                    .setId(member.getId())
-                    .setEmail(member.getEmail())
-                    .setName(member.getName())
-                    .build();
-
-            responseObserver.onNext(response);
+            responseObserver.onNext(grpcMemberMapper.entityToProto(member));
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("getMemberById 메서드 실행 중 오류 발생", e);

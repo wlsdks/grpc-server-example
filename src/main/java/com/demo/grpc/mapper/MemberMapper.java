@@ -15,6 +15,11 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MemberMapper {
 
+    @Mapping(target = "etcInfo.address", source = "address")
+    @Mapping(target = "etcInfo.contact", source = "contact")
+    @Mapping(target = "etcInfo.interests", source = "interests")
+    @Mapping(target = "etcInfo.skills", source = "skills")
+    @Mapping(target = "etcInfo.metadata", source = "metadata")
     MemberEntity dtoToEntity(MemberSignUpRequestDTO dto);
 
     @Mapping(target = "address", source = "etcInfo.address")

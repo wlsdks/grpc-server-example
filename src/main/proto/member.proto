@@ -16,9 +16,6 @@ service MemberService {
 
   // 이메일로 회원 조회
   rpc GetMemberByEmail (MemberEmailRequest) returns (MemberResponse);
-
-  // 여러 회원 조회 (페이징 지원)
-  rpc ListMembers (ListMemberRequest) returns (ListMemberResponse);
 }
 
 // 회원 ID로 조회 요청
@@ -31,28 +28,35 @@ message MemberEmailRequest {
   string email = 1;
 }
 
-// 회원 목록 조회 요청 (페이징 지원)
-message ListMemberRequest {
-  int32 page = 1;      // 페이지 번호
-  int32 pageSize = 2;  // 페이지당 데이터 수
+// 주소 정보
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+  string postal_code = 4;
+  map<string, string> additional_info = 5;
 }
 
-// 회원 조회 응답
+// 연락처 정보
+message Contact {
+  string phone = 1;
+  string mobile = 2;
+  string work_phone = 3;
+  repeated string emails = 4;
+  map<string, string> social_media = 5;
+}
+
+// 회원 정보 응답
 message MemberResponse {
   int64 id = 1;
   string email = 2;
-  string name = 4;
-  string profileImageBase64 = 5;
-  string etcInfo = 6;
-  // 비밀번호는 보안상 응답에 포함하지 않음
-}
-
-// 회원 목록 조회 응답
-message ListMemberResponse {
-  repeated MemberResponse members = 1;
-  int32 totalCount = 2;    // 전체 회원 수
-  int32 page = 3;          // 현재 페이지
-  int32 pageSize = 4;      // 페이지당 데이터 수
+  string name = 3;
+  string profile_image_base64 = 4;
+  Address address = 5;
+  Contact contact = 6;
+  repeated string interests = 7;
+  repeated string skills = 8;
+  string metadata = 9;
 }
 
 // 멤버 생성 요청 객체
