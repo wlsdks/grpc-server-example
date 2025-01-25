@@ -1,4 +1,4 @@
-package com.demo.grpc.dto;
+package com.demo.grpc.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

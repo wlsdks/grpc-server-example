@@ -1,9 +1,9 @@
 package com.demo.grpc.service;
 
 import com.demo.grpc.config.security.common.JwtUtil;
-import com.demo.grpc.dto.LoginResponse;
-import com.demo.grpc.dto.MemberSignUpRequestDTO;
-import com.demo.grpc.dto.ResponseMemberDTO;
+import com.demo.grpc.dto.response.LoginResponse;
+import com.demo.grpc.dto.request.MemberSignUpRequestDTO;
+import com.demo.grpc.dto.response.ResponseMemberDTO;
 import com.demo.grpc.entity.MemberEntity;
 import com.demo.grpc.mapper.MemberMapper;
 import com.demo.grpc.repository.MemberRepository;
@@ -28,7 +28,7 @@ public class MemberService {
     public ResponseMemberDTO createMember(MemberSignUpRequestDTO memberDTO) {
         MemberEntity memberEntity = memberMapper.dtoToEntity(memberDTO);
         MemberEntity savedMemberEntity = memberRepository.save(memberEntity);
-        return memberMapper.dtoToResponseDto(savedMemberEntity);
+        return memberMapper.entityToDto(savedMemberEntity);
     }
 
     /**
@@ -58,7 +58,7 @@ public class MemberService {
         MemberEntity memberEntity = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid member ID"));
 
-        return memberMapper.dtoToResponseDto(memberEntity);
+        return memberMapper.entityToDto(memberEntity);
     }
 
 }

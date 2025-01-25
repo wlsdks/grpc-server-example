@@ -30,20 +30,7 @@ public class MemberEntity {
     @Column(columnDefinition = "TEXT")
     private String profileImageBase64;
 
-    @Column(columnDefinition = "TEXT")
-    private String etcInfo;
-
-    // change 메서드
-    public void changePassword(String newPassword) {
-        this.password = newPassword;
-    }
-
-    public void changeProfileImage(String newImage) {
-        this.profileImageBase64 = newImage;
-    }
-
-    public void changeEtcInfo(String newInfo) {
-        this.etcInfo = newInfo;
-    }
+    @Embedded
+    private EtcInfo etcInfo;
 
 }

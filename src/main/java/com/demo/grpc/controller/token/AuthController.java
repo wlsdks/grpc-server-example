@@ -1,10 +1,10 @@
 package com.demo.grpc.controller.token;
 
 import com.demo.grpc.config.security.common.JwtUtil;
-import com.demo.grpc.dto.LoginRequest;
-import com.demo.grpc.dto.LoginResponse;
-import com.demo.grpc.dto.TokenRefreshRequest;
-import com.demo.grpc.dto.TokenResponse;
+import com.demo.grpc.dto.request.LoginRequest;
+import com.demo.grpc.dto.response.LoginResponse;
+import com.demo.grpc.dto.request.TokenRefreshRequest;
+import com.demo.grpc.dto.response.TokenResponse;
 import com.demo.grpc.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
