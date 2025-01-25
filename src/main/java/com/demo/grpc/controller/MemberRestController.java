@@ -1,7 +1,7 @@
 package com.demo.grpc.controller;
 
-import com.demo.grpc.dto.MemberSignUpRequestDTO;
-import com.demo.grpc.dto.ResponseMemberDTO;
+import com.demo.grpc.dto.request.MemberSignUpRequestDTO;
+import com.demo.grpc.dto.response.ResponseMemberDTO;
 import com.demo.grpc.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
