@@ -33,4 +33,8 @@ public class MemberEntity {
     @Embedded
     private EtcInfo etcInfo;
 
+    public void changeProfileImageBase64(String dummyBase64) {
+        this.profileImageBase64 = dummyBase64;
+    }
+
 }
