@@ -8,15 +8,25 @@ app:
     id: auth-server-1
 
 spring:
+  # 데이터베이스 설정
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/grpc
+    username: root
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  # JPA 설정
   jpa:
+    database: POSTGRESQL
+    defer-datasource-initialization: true
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: create
+    open-in-view: false
+    # show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 10
+        highlight_sql: true
 
 # gRPC 서버포트
 grpc:
