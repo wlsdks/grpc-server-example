@@ -1,5 +1,4 @@
 buildscript {
-    // 24.07.21 기준 최신 버전
     ext {
         protobufVersion = '4.28.2'
         protobufPluginVersion = '0.9.4'
@@ -40,8 +39,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // data jpa, h2
+    // data jpa, h2, postgresql
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.h2database:h2'
 
     // lombok
@@ -66,6 +66,9 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+
+    // json 타입을 DB에 저장하기 위한 라이브러리
+    implementation 'com.vladmihalcea:hibernate-types-60:2.21.1'
 
     // Grpc-Test-Support
     testImplementation("io.grpc:grpc-testing")
