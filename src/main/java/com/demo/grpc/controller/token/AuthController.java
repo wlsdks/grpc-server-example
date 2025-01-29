@@ -2,10 +2,10 @@ package com.demo.grpc.controller.token;
 
 import com.demo.grpc.config.security.common.JwtUtil;
 import com.demo.grpc.dto.request.LoginRequest;
-import com.demo.grpc.dto.response.LoginResponse;
 import com.demo.grpc.dto.request.TokenRefreshRequest;
+import com.demo.grpc.dto.response.LoginResponse;
 import com.demo.grpc.dto.response.TokenResponse;
-import com.demo.grpc.service.MemberService;
+import com.demo.grpc.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final JwtUtil jwtUtil;
-    private final MemberService memberService;
+    private final AuthService authService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse loginResponse = memberService.login(request.getEmail(), request.getPassword());
+        LoginResponse loginResponse = authService.login(request.getEmail(), request.getPassword());
         return ResponseEntity.ok(loginResponse);
     }
 
