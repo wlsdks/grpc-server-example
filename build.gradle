@@ -81,10 +81,10 @@ protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:${protobufVersion}"
     }
-    // 생성된 파일을 정리합니다.
-    clean {
-        delete generatedFilesBaseDir
-    }
+//    // 생성된 파일을 정리합니다.
+//    clean {
+//        delete generatedFilesBaseDir
+//    }
     // gRPC 플러그인을 설정하여 Protobuf 파일로부터 gRPC 관련 코드를 생성합니다.
     plugins {
         grpc {
