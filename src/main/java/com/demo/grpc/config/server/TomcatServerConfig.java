@@ -11,10 +11,11 @@ public class TomcatServerConfig implements WebServerFactoryCustomizer<TomcatServ
     @Override
     public void customize(TomcatServletWebServerFactory factory) {
         factory.addConnectorCustomizers(connector -> {
-            if (connector.getProtocolHandler() instanceof Http11NioProtocol http) {
-                // 예: gRPC netty 실행자도 50개니까, 여기서도 50개로 제한
-                http.setMaxThreads(50);
-                http.setMinSpareThreads(10);
+            // Tomcat 10 이상 또는 최신 JDK에서는 아래와 같이 cast할 수 있습니다.
+            if (connector.getProtocolHandler() instanceof Http11NioProtocol protocol) {
+                protocol.setMaxThreads(200);        // 동시 요청을 감당할 최대 스레드 수
+                protocol.setMinSpareThreads(20);      // 유휴 상태에서도 유지할 최소 스레드 수
+                protocol.setConnectionTimeout(30000); // 연결 타임아웃 (30초)
             }
         });
     }
