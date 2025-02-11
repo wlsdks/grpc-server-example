@@ -20,11 +20,11 @@ public class EtcInfo {
     @Embedded
     private Contact contact;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "member_interests")
     private Set<String> interests = new HashSet<>();
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "member_skills")
     @Column(name = "skill")
     private Set<String> skills = new HashSet<>();
