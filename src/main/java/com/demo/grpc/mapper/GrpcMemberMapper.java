@@ -16,13 +16,13 @@ public class GrpcMemberMapper {
                 .setName(entity.getName())
                 .setProfileImageBase64(entity.getProfileImageBase64());
 
-        if (entity.getEtcInfo() != null) {
-            builder.setAddress(buildAddress(entity.getEtcInfo().getAddress()))
-                    .setContact(buildContact(entity.getEtcInfo().getContact()))
-                    .addAllInterests(entity.getEtcInfo().getInterests())
-                    .addAllSkills(entity.getEtcInfo().getSkills())
-                    .setMetadata(entity.getEtcInfo().getMetadata());
-        }
+//        if (entity.getEtcInfo() != null) {
+//            builder.setAddress(buildAddress(entity.getEtcInfo().getAddress()))
+//                    .setContact(buildContact(entity.getEtcInfo().getContact()))
+//                    .addAllInterests(entity.getEtcInfo().getInterests())
+//                    .addAllSkills(entity.getEtcInfo().getSkills())
+//                    .setMetadata(entity.getEtcInfo().getMetadata());
+//        }
 
         return builder.build();
     }

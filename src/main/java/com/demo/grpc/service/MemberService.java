@@ -53,7 +53,7 @@ public class MemberService {
     // 테스트용으로 1MB 크기의 난수 데이터를 Base64로 만든 예시
     private String generateLargeDummyBase64() {
 //        byte[] dummyBytes = new byte[1024 * 1024]; // 1MB
-        byte[] dummyBytes = new byte[1024 * 10]; // 10KB
+        byte[] dummyBytes = new byte[0]; // 10KB
         new SecureRandom().nextBytes(dummyBytes);
         return Base64.getEncoder().encodeToString(dummyBytes);
     }

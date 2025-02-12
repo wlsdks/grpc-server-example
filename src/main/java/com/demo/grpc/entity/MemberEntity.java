@@ -28,8 +28,8 @@ public class MemberEntity {
     @Column(columnDefinition = "TEXT")
     private String profileImageBase64;
 
-    @Embedded
-    private EtcInfo etcInfo;
+//    @Embedded
+//    private EtcInfo etcInfo;
 
     public void changeProfileImageBase64(String dummyBase64) {
         this.profileImageBase64 = dummyBase64;
